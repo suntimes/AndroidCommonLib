@@ -1,0 +1,16 @@
+<resources>
+
+    <declare-styleable name="ExtendedListView">
+        <attr name="scrollBarPanel" format="reference" />
+        <attr name="scrollBarPanelInAnimation" format="reference" />
+        <attr name="scrollBarPanelOutAnimation" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="CLSwitchButton">
+        <attr name="bottomImage" format="reference" />
+        <attr name="btnPressedImage" format="reference" />
+        <attr name="btnNormalImage" format="reference" />
+        <attr name="frameImage" format="reference" />
+        <attr name="maskImage" format="reference" />
+    </declare-styleable>
+
+</resources>
