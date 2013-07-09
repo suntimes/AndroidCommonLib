@@ -26,8 +26,6 @@ import java.util.zip.ZipFile;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import android.util.Log;
-import android.widget.Button;
 
 /**
  * 
@@ -42,7 +40,7 @@ public class CLFileUtil {
 		File file = new File(filePath);
 		if (!file.exists()) {
 			boolean flag = file.getParentFile().mkdirs();
-			Log.i(TAG, "createFile flag:[" + flag + "] createFile >>>  " + filePath);
+			CLLog.i(TAG, "createFile flag:[" + flag + "] createFile >>>  " + filePath);
 		}
 		return file;
 	}
@@ -78,7 +76,7 @@ public class CLFileUtil {
 			if (!to.getParentFile().exists()) {
 				to.getParentFile().mkdirs();
 			}
-			Log.i(TAG, "copy file from " + from.getPath() + "  to " + to.getPath());
+			CLLog.i(TAG, "copy file from " + from.getPath() + "  to " + to.getPath());
 
 			in = new FileInputStream(from);
 			out = new FileOutputStream(to);
@@ -393,7 +391,7 @@ public class CLFileUtil {
 			}
 			return file.createNewFile();
 		} catch (Exception e) {
-			Log.e(TAG, "createFile>>>e=" + e.toString());
+			CLLog.e(TAG, "createFile>>>e=" + e.toString());
 		}
 		return false;
 	}
@@ -420,6 +418,10 @@ public class CLFileUtil {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public static byte[] buildDataFromFile(File file) {
+		return buildDataFromFile(file.getAbsolutePath());
 	}
 
 	public static byte[] buildDataFromFile(String path) {
@@ -553,7 +555,7 @@ public class CLFileUtil {
 			os.close();
 		}
 		zfile.close();
-		Log.d("unZipFile", "unZip successful.");
+		CLLog.d("unZipFile", "unZip successful.");
 	}
 
 	/**
@@ -586,13 +588,13 @@ public class CLFileUtil {
 			substr = dirs[dirs.length - 1];
 			try {
 				substr = new String(substr.getBytes("8859_1"), "GB2312");
-				Log.d("unZipFile", "substr = " + substr);
+				CLLog.d("unZipFile", "substr = " + substr);
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
 
 			ret = new File(ret, substr);
-			Log.d("unZipFile", "2ret = " + ret);
+			CLLog.d("unZipFile", "2ret = " + ret);
 			return ret;
 		}
 		return ret;
